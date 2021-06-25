@@ -10,7 +10,7 @@ EnvironmentFile=<%= @init_sysconfig %>
    env_string = ""
    @env_append.each { |x| env_string << "#{x} -- " }
 -%>
-ExecStart=<%= env_string %><%= @nodejs_bin %> $STATSJS $STATSD_CONFIG
+ExecStart=<%= env_string %><%= @nodejs_bin %> $STATSJS $STATSD_CONFIG >> <%= @logfile %> 2>&1
 Restart=on-failure
 RestartSec=10
 
